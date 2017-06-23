@@ -1,0 +1,6 @@
+[database]
+dbname = dbname
+dbuser = root
+dbpassword = pass
+dbhost = localhost
+dbport = 3306

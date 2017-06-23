@@ -1,0 +1,166 @@
+@import "button.min.css";
+@import "input.min.css";
+@import "item.min.css";
+@import "prism.css";
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  font-size: 14px;
+}
+
+textarea {
+	background-color: #fffdfa;
+}
+
+textarea:hover {
+	background-color: #fffdfb;
+}
+.MainContainer
+{
+	/*background-color: red;*/
+	display: flex;
+	flex-direction: column;
+	border: 1px black dashed;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
+.Header
+{
+	flex-basis: 40px;
+}
+.Middle
+{
+	display: flex;
+	flex-direction: row;
+	border: 1px black dashed;
+	flex-grow: 1;
+	/*height: 100%;*/
+	box-sizing: border-box; 
+}
+.Footer
+{
+	align-self: center;
+	background-color: #ebe1d3;
+
+}
+.LeftSide
+{
+	border: 1px black dashed;
+	flex-grow: 0.85;
+	/*width: 90%;*/
+	display: flex;
+	flex-direction: column;
+}
+.CodeBlock
+{
+	flex-grow: 1;
+	/*border: 1px black dashed;*/
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box; 
+}
+
+textarea
+{
+  font-size: 15px;
+  width: 100%;
+  resize: none;
+}
+.BottomButtons
+{
+	flex-grow: 0.05;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: flex;
+	flex-direction: row;
+	background-color: #ebe1d3;
+}
+
+.LngList
+{
+	display: flex;
+	flex-grow: 0.9;
+	justify-content: left;
+	align-items: center;
+
+}
+
+.lng
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.SendItem
+{
+	flex-grow: 0.1;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+
+}
+
+.RightSide
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.RightTop
+{
+	border: 1px black dashed;
+}
+
+.ViewCodeContainer
+{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.ViewCode
+{
+	flex-grow: 1;
+}
+
+code {
+  display: block;
+  white-space: pre-wrap;
+}
+
+.ViewCodeMenu
+{
+	
+}
+
+input[type=radio] {
+	visibility: hidden;
+  	width: 0;
+	}
+
+input[type=radio] + span {
+	box-shadow: 0 0 4px #735230;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: "Arial";
+    margin: 0 10px;
+    background-color: #d9c29e;    
+    box-sizing: content-box;
+
+
+
+}
+
+input[type=radio]:checked + span {
+  color: #4d3f28;
+  background-color: #b3986e;
+  box-shadow: 0 0 4px #472c0e;
+
+}
+
+h3 
+{
+
+}

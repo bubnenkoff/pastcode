@@ -1,0 +1,7 @@
+.dub
+logs/
+.git
+*.dll
+*.exe
+npm-debug.log
+config.ini
