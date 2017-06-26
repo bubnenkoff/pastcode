@@ -15,12 +15,6 @@
 <div id="app">
 
 	<div class="MainContainer">
-		<div class="Header">
-			<div class="MyHeader"><a href="/">past-code</a></div>
-			<div class="PasteName"><input type="text" placeholder="File Name"></div>
-
-			<h3>{{language}}</h3>
-		</div>
 
 			<component :language=language :lastPasts=lastpasts :mycode=mycode v-bind:is="currentView">{{mycode}}</component>
 		<!-- <div class="Footer">

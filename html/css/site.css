@@ -24,8 +24,16 @@ textarea:hover {
 	border: 1px black dashed;
 	height: 100vh;
 	box-sizing: border-box;
-
 }
+.SubContainer
+{
+	display: flex;
+	flex-direction: column;
+	border: 1px black dashed;
+	height: 100vh;
+	box-sizing: border-box;
+}
+
 .Header
 {
 	/*flex-basis: 40px;*/
@@ -40,13 +48,16 @@ textarea:hover {
 	background-color: #4b9bad;
 }
 
-.PasteName
+.PasteNameOne
 {
-	/*align-items: 'stretch';*/
-	/*font-size: 1vw;*/
-	flex-grow: 1;
-
+	width: 200px;
 }
+
+.PasteNameTwo
+{
+	width: 200px;
+}
+
 
 .Middle
 {
@@ -123,13 +134,42 @@ textarea:hover {
 	
 }
 
+.CodeBlockContainer
+{
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+}
+
+.CodeBlockContainerOne
+{
+	display: flex;
+	flex-direction: column;
+	border: 1px black dashed;
+	flex-grow: 1;
+}
+
+.CodeBlockContainerTwo
+{
+	display: flex;
+	flex-direction: column;
+	border: 1px black dashed;
+	flex-grow: 1;
+}
+
 .CodeBlock
 {
 	flex-grow: 1;
-	/*border: 1px black dashed;*/
 	display: flex;
 	flex-direction: row;
 	box-sizing: border-box; 
+}
+
+.CodeBlockView
+{
+	flex-grow: 1;
+	display: flex;
+	flex-direction: row;
 }
 
 textarea

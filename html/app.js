@@ -4,74 +4,146 @@ const bus = new Vue();
 
 Vue.component('past-form', {
   props: ['lastpasts', 'test'],
-  template: `<div class="Middle">
-			<div class="LeftSide">
-				<div class="CodeBlock">				
-					  <textarea placeholder="Your code here..." v-model=mycode></textarea> 
-				</div>
-				<div class="BottomButtons">
-					<div class="LngList" v-for="(lang, index) in languages">
-					
-					 	<button @click="clickOnLanguage(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+  template: `
+  	<div class="SubContainer">
+			<div class="Header">
+				<div class="MyHeader"><a href="/">past-code</a></div>
 
-					</div>
-					<div class="SendItem">
-						<button class="ui brown button" :disabled="isReadyToSend" @click="sendClick($event)">Send</button>
-					</div>
-				</div>
+				<button @click="splitView = !splitView">Split View</button>
 			</div>
 
-			<div class="RightSide">
-				<div class="RightTop">
-					My Last Code-Paste
+	  		<div class="Middle">
+				<div class="LeftSide">
+					<div class="CodeBlockContainer">
+						<div class="CodeBlockContainerOne">
+							
+							<div class="CodeBlock">
+								  <div class="CodeBlockView"><textarea placeholder="Your code here..." v-model=mycodeOne></textarea></div> <!-- Show one -->
+							</div>
+							<div class="BottomButtons">
+								<div class="LngList" v-for="(lang, index) in languagesOne">
+								 	<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+								</div>
+
+								<div class="SendItem" v-if="!splitView">
+									<button class="ui brown button" :disabled="isReadyToSend" @click="sendClick($event)">Send</button>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="CodeBlockContainerTwo" v-if="splitView"> <!-- Add to display second -->
+							
+							<div class="CodeBlock">
+								  <div class="CodeBlockView"><textarea placeholder="Your code here..." v-model=mycodeTwo></textarea></div>
+							</div>
+							<div class="BottomButtons">
+								<div class="LngList" v-for="(lang, index) in languagesTwo">
+								 	<button @click="clickOnLanguageTwo(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+								</div>
+
+								<div class="SendItem">
+									<button class="ui brown button" :disabled="isReadyToSend" @click="sendClick($event)">Send</button>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
 				</div>
-				<div class="RightDown">
-					<div style="padding-bottom: 5px;" v-for="el in lastpasts">
-						<a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a>
-					</div>	
+
+				<div class="RightSide">
+					<div class="RightTop">
+						My Last Code-Paste
+					</div>
+					<div class="RightDown">
+						<div style="padding-bottom: 5px;" v-for="el in lastpasts">
+							<a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a>
+						</div>	
+					</div>
 				</div>
+				
 			</div>
-			
-		</div>`,
+		</div>
+			`,
 		data () {
 		return {
-				mycode: '',
-				languages: [
+				mycodeOne: '',
+				mycodeTwo: '',
+				languagesOne: [
 					{lang:'D', isClicked: false},
 					{lang:'C#', isClicked: false},
 					{lang:'Dart', isClicked: false},
 					{lang:'Text', isClicked: false}
 				],
-				selectedLanguage: ''
+
+				languagesTwo: [
+					{lang:'D', isClicked: false},
+					{lang:'C#', isClicked: false},
+					{lang:'Dart', isClicked: false},
+					{lang:'Text', isClicked: false}
+				],
+
+				selectedLanguageOne: '',
+				selectedLanguageTwo: '',
+				splitView : false
 			}
 		},
 		methods: {
 			sendClick(e)
 	  		{
-	  			bus.$emit('codechange', this.mycode, this.selectedLanguage);
+	  			bus.$emit('codechange', this.mycodeOne, this.mycodeTwo, this.selectedLanguageOne);
 	  		},
-	  		clickOnLanguage(language, index)
+	  		clickOnLanguageOne(language, index)
 	  		{
-				for(n of this.languages)
+				for(n of this.languagesOne)
 					{
 						if(n.lang == language)
 						{
-							 this.selectedLanguage = n.lang;
+							 this.selectedLanguageOne = n.lang;
 							 n.isClicked = true;
 						}
 						else
 							n.isClicked = false;
 					}
-	  		}
+	  		},
+
+	  		clickOnLanguageTwo(language, index)
+	  		{
+				for(n of this.languagesTwo)
+					{
+						if(n.lang == language)
+						{
+							 this.selectedLanguageTwo = n.lang;
+							 n.isClicked = true;
+						}
+						else
+							n.isClicked = false;
+					}
+	  		},
+
 
 		},
 		computed: {
 			isReadyToSend()
 			{
-				if(this.selectedLanguage != "" && this.mycode.length>1)
-					return false;
-				else
-					return true;
+				if(this.splitView) //if splitview is true
+				{
+					if(this.selectedLanguageOne != "" && this.mycodeOne.length>1 && this.selectedLanguageTwo != "" && this.mycodeTwo.length>1)
+						return false;
+					else
+						return true;					
+				}
+
+				if(!this.splitView)
+				{
+					if(this.selectedLanguageOne != "" && this.mycodeOne.length>1)
+						return false;
+					else
+						return true;
+				}
+
 			}
 		}
 
@@ -79,11 +151,11 @@ Vue.component('past-form', {
 
 
 Vue.component('view-form', {
-	props: ['mycode'],
+	props: ['mycodeOne'],
  	template: `
   		<div class="ViewCodeContainer">
 				<div class="ViewCode">
-					<code> {{mycode}} </code>
+					<code> {{mycodeOne}} </code>
 				</div>
 		</div>`
 })
@@ -92,7 +164,7 @@ var app = new Vue({
   el: '#app',
   data: {
     currentView: 'past-form',
-    mycode: '',
+    mycodeOne: '',
     language: '',
     responseURL: '',
     lastpasts : []
@@ -102,7 +174,7 @@ var app = new Vue({
   	changeView()
   	{
   		this.currentView = 'view-form';
-  		console.log(this.mycode);
+  		console.log(this.mycodeOne);
   		console.log("this.responseURL", this.responseURL);
   		history.pushState(null, null, '/' + this.responseURL);
   		window.location.href = '/' + this.responseURL;
@@ -113,7 +185,7 @@ var app = new Vue({
 		var obj = {};
 		var data = {};
 		obj.language = this.language.replace(`C#`, `csharp`);
-		obj.code = this.mycode;
+		obj.code = this.mycodeOne;
 		data.data = obj;
 
 		this.$http.post('/post', data).then(response => {		
@@ -143,8 +215,8 @@ var app = new Vue({
 
   created() // all other events
   {  		
-	bus.$on('codechange', function(mycode, language){
-		this.mycode = mycode;
+	bus.$on('codechange', function(mycodeOne, language){
+		this.mycodeOne = mycodeOne;
 		this.language = language;
 		// this.changeView();
 		this.sendCode();
