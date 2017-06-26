@@ -46,7 +46,7 @@ void myStuff(HTTPServerRequest req, HTTPServerResponse res) // I need this to ha
 		arrayOfLines ~= line;
 		LineNumber++;
 	}
-	writeln("LineNumber: ", LineNumber);
+	//writeln("LineNumber: ", LineNumber);
 	//writeln(answer);
 	//writeln("^^^^^^^^");
 	//res.writeJsonBody(answer);

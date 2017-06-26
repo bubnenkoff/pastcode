@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
     <script src="app.js"></script>
-    <script src="prism.js"></script>
+    <script src="js/prism.js"></script>
 
 </head>
 <body>
@@ -16,11 +16,13 @@
 
 	<div class="MainContainer">
 		<div class="Header">
-			<a href="/">past-code</a>
+			<div class="MyHeader"><a href="/">past-code</a></div>
+			<div class="PasteName"><input type="text" placeholder="File Name"></div>
+
 			<h3>{{language}}</h3>
 		</div>
 
-			<component :language=language :mycode=mycode v-bind:is="currentView">{{mycode}}</component>
+			<component :language=language :lastPasts=lastpasts :mycode=mycode v-bind:is="currentView">{{mycode}}</component>
 		<!-- <div class="Footer">
 			footer
 		</div>

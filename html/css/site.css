@@ -1,4 +1,4 @@
-@import "button.min.css";
+@import "button.css";
 @import "input.min.css";
 @import "item.min.css";
 @import "prism.css";
@@ -19,40 +19,110 @@ textarea:hover {
 }
 .MainContainer
 {
-	/*background-color: red;*/
 	display: flex;
 	flex-direction: column;
 	border: 1px black dashed;
-	min-height: 100vh;
+	height: 100vh;
 	box-sizing: border-box;
+
 }
 .Header
 {
-	flex-basis: 40px;
+	/*flex-basis: 40px;*/
+	height: 40px;
+	display: flex;
+	flex-direction: row;
 }
+
+.MyHeader
+{
+	width: 200px;
+	background-color: #4b9bad;
+}
+
+.PasteName
+{
+	/*align-items: 'stretch';*/
+	/*font-size: 1vw;*/
+	flex-grow: 1;
+
+}
+
 .Middle
 {
 	display: flex;
 	flex-direction: row;
 	border: 1px black dashed;
 	flex-grow: 1;
-	/*height: 100%;*/
 	box-sizing: border-box; 
 }
+
 .Footer
 {
 	align-self: center;
 	background-color: #ebe1d3;
 
+
 }
-.LeftSide
+
+/* mobile  */
+@media (max-width: 1024px)
 {
-	border: 1px black dashed;
-	flex-grow: 0.85;
-	/*width: 90%;*/
-	display: flex;
-	flex-direction: column;
+	.LeftSide
+	{
+		border: 1px black dashed;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.RightSide
+	{
+		display: flex;
+		flex-direction: column;
+		display: none;
+	}
+
+	.RightTop
+	{
+		border: 1px black dashed;
+	}	
+	
 }
+
+/* desktop */
+@media (min-width: 1024px) {
+
+	.LeftSide
+	{
+		border: 1px black dashed;
+		flex-grow: 0.85;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.RightSide
+	{
+		display: flex;
+		flex-direction: column;
+		flex-grow: 0.25;
+	}
+
+	.RightTop
+	{
+		border: 1px black dashed;
+		background-color: #241d15;
+		color: white;
+		text-align: center;
+	}
+
+	.RightDown
+	{
+
+	}
+	
+}
+
 .CodeBlock
 {
 	flex-grow: 1;
@@ -68,6 +138,7 @@ textarea
   width: 100%;
   resize: none;
 }
+
 .BottomButtons
 {
 	flex-grow: 0.05;
@@ -75,7 +146,9 @@ textarea
 	padding-bottom: 5px;
 	display: flex;
 	flex-direction: row;
-	background-color: #ebe1d3;
+	background-color: #241d15;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .LngList
@@ -99,19 +172,15 @@ textarea
 	display: flex;
 	justify-content: left;
 	align-items: center;
-
 }
 
-.RightSide
+
+.LastPastsLinkStyle
 {
-	display: flex;
-	flex-direction: column;
+	text-decoration: none;
+	color: black;
 }
 
-.RightTop
-{
-	border: 1px black dashed;
-}
 
 .ViewCodeContainer
 {
@@ -130,37 +199,5 @@ code {
   white-space: pre-wrap;
 }
 
-.ViewCodeMenu
-{
-	
-}
-
-input[type=radio] {
-	visibility: hidden;
-  	width: 0;
-	}
-
-input[type=radio] + span {
-	box-shadow: 0 0 4px #735230;
-    padding: 10px;
-    border-radius: 4px;
-    font-family: "Arial";
-    margin: 0 10px;
-    background-color: #d9c29e;    
-    box-sizing: content-box;
-
-
-
-}
-
-input[type=radio]:checked + span {
-  color: #4d3f28;
-  background-color: #b3986e;
-  box-shadow: 0 0 4px #472c0e;
-
-}
-
-h3 
-{
 
 }
