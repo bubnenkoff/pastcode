@@ -4,10 +4,7 @@ import router;
 import config;
 import vibe.d;
 
-//static this()
-//{
-	
-//}
+
 Database mydatabase;
 void main()
 {

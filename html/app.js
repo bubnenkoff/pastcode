@@ -93,7 +93,7 @@ Vue.component('past-form', {
 		methods: {
 			sendClick(e)
 	  		{
-	  			bus.$emit('codechange', this.mycodeOne, this.mycodeTwo, this.selectedLanguageOne);
+	  			bus.$emit('codechange', this.mycodeOne, this.selectedLanguageOne, this.mycodeTwo, this.selectedLanguageTwo);
 	  		},
 	  		clickOnLanguageOne(language, index)
 	  		{
@@ -165,7 +165,9 @@ var app = new Vue({
   data: {
     currentView: 'past-form',
     mycodeOne: '',
-    language: '',
+    mycodeTwo: '',
+    languageOne: '',
+    languageTwo: '',
     responseURL: '',
     lastpasts : []
   },
@@ -174,7 +176,7 @@ var app = new Vue({
   	changeView()
   	{
   		this.currentView = 'view-form';
-  		console.log(this.mycodeOne);
+  		// console.log(this.mycodeOne);
   		console.log("this.responseURL", this.responseURL);
   		history.pushState(null, null, '/' + this.responseURL);
   		window.location.href = '/' + this.responseURL;
@@ -184,8 +186,15 @@ var app = new Vue({
   	{
 		var obj = {};
 		var data = {};
-		obj.language = this.language.replace(`C#`, `csharp`);
-		obj.code = this.mycodeOne;
+		obj.languageOne = this.languageOne.replace(`C#`, `csharp`);
+		obj.codeOne = this.mycodeOne;
+		if(languageTwo.length != "") // if second language is used
+		{
+			obj.splitView = true;
+			obj.languageTwo = this.languageTwo.replace(`C#`, `csharp`);
+			obj.codeTwo = this.mycodeTwo;
+		}
+
 		data.data = obj;
 
 		this.$http.post('/post', data).then(response => {		
@@ -215,10 +224,12 @@ var app = new Vue({
 
   created() // all other events
   {  		
-	bus.$on('codechange', function(mycodeOne, language){
+	bus.$on('codechange', function(mycodeOne, languageOne, mycodeTwo, languageTwo){
 		this.mycodeOne = mycodeOne;
-		this.language = language;
-		// this.changeView();
+		this.language = languageOne;
+		this.mycodeTwo = mycodeTwo;
+		this.languageTwo = languageTwo;
+
 		this.sendCode();
 
 	}.bind(this));
