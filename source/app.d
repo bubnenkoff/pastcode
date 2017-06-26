@@ -11,7 +11,7 @@ void main()
 	Config config = new Config();
 	auto settings = new HTTPServerSettings;
 	settings.port = 8081;
-	settings.bindAddresses = ["::1", "127.0.0.1"];
+	settings.bindAddresses = ["::1", "0.0.0.0"];
 
 	auto router = new URLRouter();
 	router.get("/*", serveStaticFiles("./html"));
@@ -31,7 +31,6 @@ void main()
 
 void myStuff(HTTPServerRequest req, HTTPServerResponse res) // I need this to handle any accessed URLs
 {
-	writeln("iiii");
 	//if(req.path.length > 10)
 	//writeln(req.path);
 	Json answer = mydatabase.getCode(req.path[1..$]); // because first is slash

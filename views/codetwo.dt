@@ -4,34 +4,91 @@
 doctype html
 html
 	head
-		title Past Code Service
+		title Paste Code Service
 		- css("site");
 		- css("prism");
 	body
+		div.Header
+			div.MyHeader
+				a(href="/") #Paste-Code
+		- import std.array;
 		div#app
-			div.MainContainer
-				div.Header
-					a(href="/") past-code
-						- import std.array;
-					h3 #{languageTwo.replace(`csharp`, `C#`)}
-						ol
-							- import std.uni;
-							- if (languageTwo.toLower == "csharp")
-								- foreach(i, line; arrayOfLinesTwo )
-									li
-										code.language-csharp #{line}
-									
-							- if (languageTwo.toLower == "d")
-								- foreach(i, line; arrayOfLinesTwo )
-									li
-										code.language-d #{line}
-									
-							- if (languageTwo.toLower == "dart")
-								- foreach(i, line; arrayOfLinesTwo )
-									li
-										code.language-dart #{line}					
+			div.MainContainerSplit
+				div.CodeOne
+					h2 #{languageOne.replace(`csharp`, `C#`)}
+					ol
+						- import std.uni;
+						- if (languageOne.toLower == "csharp")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-csharp #{line}
+								
+						- if (languageOne.toLower == "d")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-d #{line}
+								
+						- if (languageOne.toLower == "dart")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-dart #{line}	
 
-							- if (languageTwo.toLower == "text")
-								- foreach(i, line; arrayOfLinesTwo )
-									li
-										code #{line}							
+						- if (languageOne.toLower == "python")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-python #{line}
+
+						- if (languageOne.toLower == "java")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-java #{line}	
+
+						- if (languageOne.toLower == "swift")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-swift #{line}										
+
+						- if (languageOne.toLower == "text")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code #{line}	
+								
+									
+				div.CodeTwo
+					h2 #{languageTwo.replace(`csharp`, `C#`)}
+					ol
+						- import std.uni;
+						- if (languageOne.toLower == "csharp")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-csharp #{line}
+								
+						- if (languageOne.toLower == "d")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-d #{line}
+								
+						- if (languageOne.toLower == "dart")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-dart #{line}	
+
+						- if (languageOne.toLower == "python")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-python #{line}
+
+						- if (languageOne.toLower == "java")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-java #{line}	
+
+						- if (languageOne.toLower == "swift")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code.language-swift #{line}										
+
+						- if (languageOne.toLower == "text")
+							- foreach(i, line; arrayOfLinesOne )
+								li
+									code #{line}	

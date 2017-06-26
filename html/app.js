@@ -7,9 +7,8 @@ Vue.component('past-form', {
   template: `
   	<div class="SubContainer">
 			<div class="Header">
-				<div class="MyHeader"><a href="/">past-code</a></div>
+				<div class="MyHeader"><a href="/">#Paste-Code</a></div>
 
-				<button @click="splitView = !splitView">Split View</button>
 			</div>
 
 	  		<div class="Middle">
@@ -21,6 +20,8 @@ Vue.component('past-form', {
 								  <div class="CodeBlockView"><textarea placeholder="Your code here..." v-model=mycodeOne></textarea></div> <!-- Show one -->
 							</div>
 							<div class="BottomButtons">
+
+								<div class="LngList" @click="splitView = !splitView"><button class="ui inverted yellow button">[ | ]</button></div>
 								<div class="LngList" v-for="(lang, index) in languagesOne">
 								 	<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
 								</div>
@@ -178,8 +179,8 @@ var app = new Vue({
   		this.currentView = 'view-form';
   		// console.log(this.mycodeOne);
   		console.log("this.responseURL", this.responseURL);
-  		history.pushState(null, null, '/' + this.responseURL);
-  		// window.location.href = '/' + this.responseURL;
+  		// history.pushState(null, null, '/' + this.responseURL); // чтобы работало нужно шаблон править
+  		window.location.href = '/' + this.responseURL;
   	},
 
   	sendCode()

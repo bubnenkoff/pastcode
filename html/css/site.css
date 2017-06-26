@@ -21,15 +21,37 @@ textarea:hover {
 {
 	display: flex;
 	flex-direction: column;
-	border: 1px black dashed;
+	/*border: 1px black dashed;*/
 	height: 100vh;
 	box-sizing: border-box;
 }
+
+
+.MainContainerSplit /* for DIET output */
+{
+	display: flex;
+	flex-direction: row;
+	/*border: 1px black dashed;*/
+	height: 100vh;
+	box-sizing: border-box;
+}
+
+.CodeOne
+{
+	flex-grow: 1;
+}
+
+.CodeTwo
+{
+	flex-grow: 1;
+}
+
+
 .SubContainer
 {
 	display: flex;
 	flex-direction: column;
-	border: 1px black dashed;
+	/*border: 1px black dashed;*/
 	height: 100vh;
 	box-sizing: border-box;
 }
@@ -40,22 +62,16 @@ textarea:hover {
 	height: 40px;
 	display: flex;
 	flex-direction: row;
+	background-color: #241d15;
 }
 
-.MyHeader
+.MyHeader a
 {
-	width: 200px;
-	background-color: #4b9bad;
-}
+	/*width: 200px;*/
+	/*background-color: #241d15;*/
+	color: white;
+	font-size: 1.4em;
 
-.PasteNameOne
-{
-	width: 200px;
-}
-
-.PasteNameTwo
-{
-	width: 200px;
 }
 
 
@@ -63,7 +79,7 @@ textarea:hover {
 {
 	display: flex;
 	flex-direction: row;
-	border: 1px black dashed;
+	/*border: 1px black dashed;*/
 	flex-grow: 1;
 	box-sizing: border-box; 
 }
@@ -81,7 +97,7 @@ textarea:hover {
 {
 	.LeftSide
 	{
-		border: 1px black dashed;
+		/*border: 1px black dashed;*/
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
@@ -96,7 +112,7 @@ textarea:hover {
 
 	.RightTop
 	{
-		border: 1px black dashed;
+		/*border: 1px black dashed;*/
 	}	
 	
 }
@@ -106,7 +122,7 @@ textarea:hover {
 
 	.LeftSide
 	{
-		border: 1px black dashed;
+		/*border: 1px black dashed;*/
 		flex-grow: 0.85;
 		display: flex;
 		flex-direction: column;
@@ -121,7 +137,7 @@ textarea:hover {
 
 	.RightTop
 	{
-		border: 1px black dashed;
+		/*border: 1px black dashed;*/
 		background-color: #241d15;
 		color: white;
 		text-align: center;
@@ -145,7 +161,7 @@ textarea:hover {
 {
 	display: flex;
 	flex-direction: column;
-	border: 1px black dashed;
+	/*border: 1px black dashed;*/
 	flex-grow: 1;
 }
 
@@ -153,7 +169,7 @@ textarea:hover {
 {
 	display: flex;
 	flex-direction: column;
-	border: 1px black dashed;
+	/*border: 1px black dashed;*/
 	flex-grow: 1;
 }
 
@@ -187,14 +203,14 @@ textarea
 	display: flex;
 	flex-direction: row;
 	background-color: #241d15;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .LngList
 {
 	display: flex;
-	flex-grow: 0.9;
+	flex-grow: 0.8;
 	justify-content: left;
 	align-items: center;
 
