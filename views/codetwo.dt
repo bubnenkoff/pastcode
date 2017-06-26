@@ -1,0 +1,37 @@
+- void css(string file)
+	link(rel= 'stylesheet', type='text/css', href='/css/#{file}.css')
+	script(type="text/javascript", src="js/prism.js")
+doctype html
+html
+	head
+		title Past Code Service
+		- css("site");
+		- css("prism");
+	body
+		div#app
+			div.MainContainer
+				div.Header
+					a(href="/") past-code
+						- import std.array;
+					h3 #{languageTwo.replace(`csharp`, `C#`)}
+						ol
+							- import std.uni;
+							- if (languageTwo.toLower == "csharp")
+								- foreach(i, line; arrayOfLinesTwo )
+									li
+										code.language-csharp #{line}
+									
+							- if (languageTwo.toLower == "d")
+								- foreach(i, line; arrayOfLinesTwo )
+									li
+										code.language-d #{line}
+									
+							- if (languageTwo.toLower == "dart")
+								- foreach(i, line; arrayOfLinesTwo )
+									li
+										code.language-dart #{line}					
+
+							- if (languageTwo.toLower == "text")
+								- foreach(i, line; arrayOfLinesTwo )
+									li
+										code #{line}							

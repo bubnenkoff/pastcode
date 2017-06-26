@@ -19,7 +19,7 @@ class MyRouter : API
    
     string insertCode(Json data) // we should return only GUID
     {
-       return db.insertCode(data["language"].get!string, data["code"].get!string);
+       return db.insertCode(data); 
     }
 
 

@@ -13,25 +13,25 @@ html
 				div.Header
 					a(href="/") past-code
 						- import std.array;
-					h3 #{language.replace(`csharp`, `C#`)}
+					h3 #{languageOne.replace(`csharp`, `C#`)}
 						ol
 							- import std.uni;
-							- if (language.toLower == "csharp")
-								- foreach(i, line; arrayOfLines )
+							- if (languageOne.toLower == "csharp")
+								- foreach(i, line; arrayOfLinesOne )
 									li
 										code.language-csharp #{line}
 									
-							- if (language.toLower == "d")
-								- foreach(i, line; arrayOfLines )
+							- if (languageOne.toLower == "d")
+								- foreach(i, line; arrayOfLinesOne )
 									li
 										code.language-d #{line}
 									
-							- if (language.toLower == "dart")
-								- foreach(i, line; arrayOfLines )
+							- if (languageOne.toLower == "dart")
+								- foreach(i, line; arrayOfLinesOne )
 									li
 										code.language-dart #{line}					
 
-							- if (language.toLower == "text")
-								- foreach(i, line; arrayOfLines )
+							- if (languageOne.toLower == "text")
+								- foreach(i, line; arrayOfLinesOne )
 									li
 										code #{line}							

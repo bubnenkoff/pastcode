@@ -179,7 +179,7 @@ var app = new Vue({
   		// console.log(this.mycodeOne);
   		console.log("this.responseURL", this.responseURL);
   		history.pushState(null, null, '/' + this.responseURL);
-  		window.location.href = '/' + this.responseURL;
+  		// window.location.href = '/' + this.responseURL;
   	},
 
   	sendCode()
@@ -188,7 +188,8 @@ var app = new Vue({
 		var data = {};
 		obj.languageOne = this.languageOne.replace(`C#`, `csharp`);
 		obj.codeOne = this.mycodeOne;
-		if(languageTwo.length != "") // if second language is used
+		obj.splitView = false;
+		if(this.languageTwo.length != "") // if second language is used
 		{
 			obj.splitView = true;
 			obj.languageTwo = this.languageTwo.replace(`C#`, `csharp`);
@@ -226,7 +227,7 @@ var app = new Vue({
   {  		
 	bus.$on('codechange', function(mycodeOne, languageOne, mycodeTwo, languageTwo){
 		this.mycodeOne = mycodeOne;
-		this.language = languageOne;
+		this.languageOne = languageOne;
 		this.mycodeTwo = mycodeTwo;
 		this.languageTwo = languageTwo;
 
