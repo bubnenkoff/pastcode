@@ -112,7 +112,12 @@ textarea:hover {
 	.RightTop
 	{
 		background-color: #241d15;
-	}	
+	}
+
+	.MinorButtons
+	{
+		display: none;
+	}
 	
 }
 

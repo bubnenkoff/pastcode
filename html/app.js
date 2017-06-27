@@ -21,10 +21,10 @@ Vue.component('past-form', {
 							</div>
 							<div class="BottomButtons">
 
-								<div class="LngList" @click="splitView = !splitView"><button class="ui inverted yellow button">[ | ]</button></div>
+								<div class="LngList" @click="splitView = !splitView"><button class="ui inverted yellow button" style="white-space:nowrap">[ | ]</button></div>
 								<div class="LngList" v-for="(lang, index) in languagesOne">
-									<div v-if="lang.isMinor">
-								 		<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted red button': !lang.isClicked , 'ui red button': lang.isClicked}">{{lang.lang}}</button>	
+									<div class="MinorButtons" v-if="lang.isMinor">
+								 		<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>	
 									</div>
 
 									<div v-else>
@@ -46,7 +46,15 @@ Vue.component('past-form', {
 							</div>
 							<div class="BottomButtons">
 								<div class="LngList" v-for="(lang, index) in languagesTwo">
-								 	<button @click="clickOnLanguageTwo(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+
+								 	<div class="MinorButtons" v-if="lang.isMinor">
+								 		<button @click="clickOnLanguageTwo(lang.lang, index)" :class="{'ui inverted red button': !lang.isClicked , 'ui red button': lang.isClicked}">{{lang.lang}}</button>	
+									</div>
+
+									<div v-else>
+										<button @click="clickOnLanguageTwo(lang.lang, index)" :class="{'ui inverted red button': !lang.isClicked , 'ui red button': lang.isClicked}">{{lang.lang}}</button>
+									</div>	
+
 								</div>
 
 								<div class="SendItem">
@@ -82,19 +90,22 @@ Vue.component('past-form', {
 					{lang:'D', isClicked: false, isMinor: false},
 					{lang:'C#', isClicked: false, isMinor: false},
 					{lang:'Python', isClicked: false, isMinor: false},
-					{lang:'Text', isClicked: false, isMinor: false},
 					{lang:'Dart', isClicked: false, isMinor: true},
 					{lang:'Java', isClicked: false, isMinor: true},
 					{lang:'Swift', isClicked: false, isMinor: true},
 					{lang:'C++', isClicked: false, isMinor: true},
+					{lang:'Text', isClicked: false, isMinor: false}					
 				],
 
 				languagesTwo: [
-					{lang:'D', isClicked: false},
-					{lang:'C#', isClicked: false},
-					{lang:'Python', isClicked: false},
-					{lang:'Dart', isClicked: false},				
-					{lang:'Text', isClicked: false},
+					{lang:'D', isClicked: false, isMinor: false},
+					{lang:'C#', isClicked: false, isMinor: false},
+					{lang:'Python', isClicked: false, isMinor: false},
+					{lang:'Dart', isClicked: false, isMinor: true},
+					{lang:'Java', isClicked: false, isMinor: true},
+					{lang:'Swift', isClicked: false, isMinor: true},
+					{lang:'C++', isClicked: false, isMinor: true},
+					{lang:'Text', isClicked: false, isMinor: false}
 
 				],
 
