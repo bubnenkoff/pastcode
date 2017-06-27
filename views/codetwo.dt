@@ -58,37 +58,37 @@ html
 					h2 #{languageTwo.replace(`csharp`, `C#`)}
 					ol
 						- import std.uni;
-						- if (languageOne.toLower == "csharp")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "csharp")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-csharp #{line}
 								
-						- if (languageOne.toLower == "d")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "d")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-d #{line}
 								
-						- if (languageOne.toLower == "dart")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "dart")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-dart #{line}	
 
-						- if (languageOne.toLower == "python")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "python")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-python #{line}
 
-						- if (languageOne.toLower == "java")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "java")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-java #{line}	
 
-						- if (languageOne.toLower == "swift")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "swift")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code.language-swift #{line}										
 
-						- if (languageOne.toLower == "text")
-							- foreach(i, line; arrayOfLinesOne )
+						- if (languageTwo.toLower == "text")
+							- foreach(i, line; arrayOfLinesTwo )
 								li
 									code #{line}	

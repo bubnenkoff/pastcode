@@ -97,7 +97,6 @@ textarea:hover {
 {
 	.LeftSide
 	{
-		/*border: 1px black dashed;*/
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
@@ -105,14 +104,14 @@ textarea:hover {
 	
 	.RightSide
 	{
-		display: flex;
-		flex-direction: column;
+		/*display: flex;
+		flex-direction: column;*/
 		display: none;
 	}
 
 	.RightTop
 	{
-		/*border: 1px black dashed;*/
+		background-color: #241d15;
 	}	
 	
 }
@@ -210,6 +209,7 @@ textarea
 .LngList
 {
 	display: flex;
+	/*flex-direction: column;*/
 	flex-grow: 0.8;
 	justify-content: left;
 	align-items: center;

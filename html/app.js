@@ -23,7 +23,13 @@ Vue.component('past-form', {
 
 								<div class="LngList" @click="splitView = !splitView"><button class="ui inverted yellow button">[ | ]</button></div>
 								<div class="LngList" v-for="(lang, index) in languagesOne">
-								 	<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+									<div v-if="lang.isMinor">
+								 		<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted red button': !lang.isClicked , 'ui red button': lang.isClicked}">{{lang.lang}}</button>	
+									</div>
+
+									<div v-else>
+										<button @click="clickOnLanguageOne(lang.lang, index)" :class="{'ui inverted orange button': !lang.isClicked , 'ui orange button': lang.isClicked}">{{lang.lang}}</button>
+									</div>							 	
 								</div>
 
 								<div class="SendItem" v-if="!splitView">
@@ -73,17 +79,23 @@ Vue.component('past-form', {
 				mycodeOne: '',
 				mycodeTwo: '',
 				languagesOne: [
-					{lang:'D', isClicked: false},
-					{lang:'C#', isClicked: false},
-					{lang:'Dart', isClicked: false},
-					{lang:'Text', isClicked: false}
+					{lang:'D', isClicked: false, isMinor: false},
+					{lang:'C#', isClicked: false, isMinor: false},
+					{lang:'Python', isClicked: false, isMinor: false},
+					{lang:'Text', isClicked: false, isMinor: false},
+					{lang:'Dart', isClicked: false, isMinor: true},
+					{lang:'Java', isClicked: false, isMinor: true},
+					{lang:'Swift', isClicked: false, isMinor: true},
+					{lang:'C++', isClicked: false, isMinor: true},
 				],
 
 				languagesTwo: [
 					{lang:'D', isClicked: false},
 					{lang:'C#', isClicked: false},
-					{lang:'Dart', isClicked: false},
-					{lang:'Text', isClicked: false}
+					{lang:'Python', isClicked: false},
+					{lang:'Dart', isClicked: false},				
+					{lang:'Text', isClicked: false},
+
 				],
 
 				selectedLanguageOne: '',
