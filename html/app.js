@@ -93,7 +93,6 @@ Vue.component('past-form', {
 					{lang:'Dart', isClicked: false, isMinor: true},
 					{lang:'Java', isClicked: false, isMinor: true},
 					{lang:'Swift', isClicked: false, isMinor: true},
-					{lang:'C++', isClicked: false, isMinor: true},
 					{lang:'Text', isClicked: false, isMinor: false}					
 				],
 
@@ -104,7 +103,6 @@ Vue.component('past-form', {
 					{lang:'Dart', isClicked: false, isMinor: true},
 					{lang:'Java', isClicked: false, isMinor: true},
 					{lang:'Swift', isClicked: false, isMinor: true},
-					{lang:'C++', isClicked: false, isMinor: true},
 					{lang:'Text', isClicked: false, isMinor: false}
 
 				],
