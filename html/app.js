@@ -173,13 +173,34 @@ Vue.component('past-form', {
 
 
 Vue.component('view-form', {
-	props: ['mycodeOne'],
+	props: ['mycodeOne', 'mycodeTwo', 'languageOne', 'languageTwo'],
  	template: `
-  		<div class="ViewCodeContainer">
-				<div class="ViewCode">
-					<code> {{mycodeOne}} </code>
-				</div>
-		</div>`
+  		  	<div class="SubContainer">
+			<div class="Header">
+				<div class="MyHeader"><a href="/">#Paste-Code</a></div>
+			</div>
+
+	  		<div class="Middle">
+				<div class="LeftSide">
+					<div class="MainContainerSplit">
+						<div class="CodeOne">
+							<h2>{{languageOne}}</h2>
+								<div>
+									<code> {{mycodeOne}} </code>
+								</div>
+						</div>
+
+						<div class="CodeTwo" v-if="languageTwo != ''"> <!-- if languagesTwo is null do not show this block -->
+							<h2>{{languageTwo}}</h2>
+								<div>
+									<code> {{mycodeTwo}} </code>
+								</div>
+						</div>
+
+					</div>
+				</div>		
+			</div>
+	</div>`
 })
 
 var app = new Vue({
@@ -199,9 +220,9 @@ var app = new Vue({
   	{
   		this.currentView = 'view-form';
   		// console.log(this.mycodeOne);
-  		console.log("this.responseURL", this.responseURL);
-  		// history.pushState(null, null, '/' + this.responseURL); // чтобы работало нужно шаблон править
-  		window.location.href = '/' + this.responseURL;
+  		// console.log("this.responseURL", this.responseURL);
+  		history.pushState(null, null, '/' + this.responseURL); // show new url
+  		window.location.href = '/' + this.responseURL; // switch to new url
   	},
 
   	sendCode()

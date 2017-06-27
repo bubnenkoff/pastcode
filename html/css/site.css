@@ -39,13 +39,24 @@ textarea:hover {
 .CodeOne
 {
 	flex-grow: 1;
+	font-size: 1.1em;
 }
 
 .CodeTwo
 {
 	flex-grow: 1;
+	font-size: 1.1em;
 }
 
+.CodeOne ol 
+{
+	font-size: 1.1em;	
+}
+
+.CodeTwo ol 
+{
+	font-size: 1.1em;	
+}
 
 .SubContainer
 {
