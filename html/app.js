@@ -70,12 +70,14 @@ Vue.component('past-form', {
 
 				<div class="RightSide">
 					<div class="RightTop">
-						My Last Code-Paste
+						Last 20 Code-Paste
 					</div>
 					<div class="RightDown">
-						<div style="padding-bottom: 5px;" v-for="el in lastpasts">
-							<a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a>
-						</div>	
+						<ol>
+							<div v-for="el in lastpasts">
+									<li style="padding-left: 10px; padding-bottom: 5px;"><a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a></li>	
+							</div>	
+						</ol>
 					</div>
 				</div>
 				
@@ -245,7 +247,7 @@ var app = new Vue({
 
 		  if(response.status == 200)
 		  {
-		  	console.log(response.body);
+		  	// console.log(response.body);
 		  	this.responseURL = response.body;
 		  	let storageObj = {};
 		  	storageObj.date = (new Date().toLocaleString());
@@ -285,7 +287,7 @@ var app = new Vue({
   	for(let obj of Object.entries(localStorage))
 	{
 		// this.lastpasts.push(obj);
-		// console.log("--> ", this.lastpasts);
+		console.log("--> ", this.lastpasts);
 		var x = {};
 		x.url = obj[1];
 		x.date = obj[0];

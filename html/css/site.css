@@ -148,11 +148,13 @@ textarea:hover {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 0.25;
+		margin-top: -15px;
 	}
 
 	.RightTop
 	{
 		/*border: 1px black dashed;*/
+		height: 15px;
 		background-color: #241d15;
 		color: white;
 		text-align: center;
