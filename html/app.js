@@ -252,8 +252,13 @@ var app = new Vue({
 		  	let storageObj = {};
 		  	storageObj.date = (new Date().toLocaleString());
 		  	storageObj.url = this.responseURL;
+
+			if(localStorage.length >= 20)
+			{
+				localStorage.removeItem(Object.entries(localStorage)[0][0]);
+			}
+
 			localStorage.setItem(storageObj.date, storageObj.url);
-			//console.log(storageObj);
 		  	this.changeView()
 
 		  }
@@ -284,13 +289,12 @@ var app = new Vue({
 
   mounted()
   {
+  	
   	for(let obj of Object.entries(localStorage))
 	{
-		// this.lastpasts.push(obj);
-		console.log("--> ", this.lastpasts);
-		var x = {};
-		x.url = obj[1];
+		var x = {};  // Object.entries is key-value. We need make it object
 		x.date = obj[0];
+		x.url = obj[1];
 		this.lastpasts.push(x);
 
 	}
