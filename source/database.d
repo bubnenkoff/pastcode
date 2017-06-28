@@ -3,6 +3,7 @@ import std.string;
 import mysql;
 import vibe.d;
 import std.uuid;
+import std.typecons;
 import config;
 
 Connection mysqlConnection;
@@ -68,20 +69,45 @@ class Database
 
 	Json getCode(string guid)
 	{
-		string sql = `SELECT languageOne, codeOne, languageTwo, codeTwo, splitView FROM code WHERE GUID LIKE '%` ~ guid ~ `%';`;
-		auto result = queryRow(mysqlConnection, sql);
 		Json myAnswer = Json.emptyObject();
-		myAnswer["languageOne"] = result[0].coerce!string;
-		myAnswer["codeOne"] = result[1].coerce!string;
-		myAnswer["splitView"] = 0;
-		if(result[4].coerce!int == 1)
+
+		try
 		{
-			myAnswer["splitView"] = 1;
-			myAnswer["languageTwo"] = result[2].coerce!string;
-			myAnswer["codeTwo"] = result[3].coerce!string;
+			string sql = `SELECT languageOne, codeOne, languageTwo, codeTwo, splitView FROM code WHERE GUID LIKE '%` ~ guid ~ `%';`;
+			auto result = queryRow(mysqlConnection, sql);
+			if(result.isNull)
+			{
+				myAnswer["error"] = true;
+				myAnswer["code"] = 404;
+				myAnswer["errorText"] = format(`No entries in DB for URL /%s`, guid);
+			}
+			else
+			{
+				myAnswer["languageOne"] = result[0].coerce!string;
+				myAnswer["codeOne"] = result[1].coerce!string;
+				myAnswer["splitView"] = 0;
+				if(result[4].coerce!int == 1)
+				{
+					myAnswer["splitView"] = 1;
+					myAnswer["languageTwo"] = result[2].coerce!string;
+					myAnswer["codeTwo"] = result[3].coerce!string;
+				}
+
+				myAnswer["error"] = false;
+			}
 		}
-		
+
+		catch(Exception e)
+		{
+			myAnswer["error"] = true;
+			myAnswer["errorText"] = e.msg;
+			myAnswer["code"] = 503;
+			
+		}
+
 		return myAnswer;
+
+
 	}
 
 }
