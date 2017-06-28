@@ -75,7 +75,7 @@ Vue.component('past-form', {
 					<div class="RightDown">
 						<ol>
 							<div v-for="el in lastpasts">
-									<li style="padding-left: 10px; padding-bottom: 5px;"><a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a></li>	
+									<li style="padding-left: 5px; padding-bottom: 5px;"><a class="LastPastsLinkStyle" :href=el.url>{{el.date}}</a></li>	
 							</div>	
 						</ol>
 					</div>
