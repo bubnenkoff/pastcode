@@ -29,25 +29,28 @@ void main()
 
 }
 
-//@errorDisplay!showPageNotFound()
 void myStuff(HTTPServerRequest req, HTTPServerResponse res) // I need this to handle any accessed URLs
 {
+	
+	int error_code;
+	string error_text;
 	if(req.path.length > 10) // prevent lookup for to short URLs
 	{
+		
 		Json answer = mydatabase.getCode(req.path[1..$]); // because first is slash
 		if(answer["error"].get!bool == true)
 		{
 
 			if(answer["code"].get!int == 404)
 			{
-				string error_text = answer["errorText"].get!string;
-				string error_code = "404";
+				error_text = answer["errorText"].get!string;
+				error_code = 404;
 				res.render!("error.dt", error_text, error_code);	
 			}
 			else // 503 and other
 			{
-				string error_text = "503 Server error!";
-				string error_code = "503";
+				error_text = answer["errorText"].get!string;
+				error_code = 503;
 				res.render!("error.dt", error_text, error_code);	
 				fLogger.log(answer);
 			}
@@ -88,11 +91,11 @@ void myStuff(HTTPServerRequest req, HTTPServerResponse res) // I need this to ha
 	}
 
 
-	else // FIXME
+	else
 	{
-		string error_text = "404 Requested URL is too short!";
-		string error_code = "404";
-		res.render!("error.dt", error_text, error_code); // for unknown reason 503 block in .dt is calling
+		error_text = "404 Requested URL is too short!";
+		error_code = 404;
+		res.render!("error.dt", error_text, error_code); 
 	}
 }
 

@@ -34,11 +34,6 @@ class Database
 	string insertCode(Json data)
 	{
 		string guid = to!string(randomUUID);
-		//writeln(data["languageOne"].get!string);
-		//writeln(data["codeOne"].get!string);
-		////writeln("guid: ", guid);
-		////writeln(guid);
-		//writeln(data);
 		
 		try
 		{
@@ -97,14 +92,14 @@ class Database
 			}
 		}
 
-		catch(Exception e)
+		catch(MySQLException e)
 		{
 			myAnswer["error"] = true;
 			myAnswer["errorText"] = e.msg;
 			myAnswer["code"] = 503;
-			
 		}
 
+		//writeln(myAnswer);
 		return myAnswer;
 
 
