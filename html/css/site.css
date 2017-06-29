@@ -45,6 +45,7 @@ textarea:hover {
 
 .CodeTwo
 {
+	display: flex;
 	flex-grow: 1;
 	font-size: 1.1em;
 }
