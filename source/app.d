@@ -12,7 +12,7 @@ void main()
 	Config config = new Config();
 	auto settings = new HTTPServerSettings;
 	settings.port = 8081;
-	settings.bindAddresses = ["::1", "0.0.0.0"];
+	settings.bindAddresses = ["::1", "127.0.0.1"];
 
 	auto router = new URLRouter();
 	router.get("/*", serveStaticFiles("./html"));
