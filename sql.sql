@@ -29,7 +29,6 @@ CREATE TABLE `code` (
 	`splitView` TinyInt( 255 ) NULL DEFAULT NULL,
 	`paste_date` Timestamp NOT NULL DEFAULT 'current_timestamp()',
 	`userIP` VarChar( 150 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`field` Timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
 	PRIMARY KEY ( `id` ),
 	CONSTRAINT `unique_id` UNIQUE( `id` ) )
 CHARACTER SET = utf8
