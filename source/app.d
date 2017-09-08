@@ -9,6 +9,7 @@ import vibe.d;
 Database mydatabase;
 void main()
 {
+	//logInfo("test");
 	Config config = new Config();
 	auto settings = new HTTPServerSettings;
 	settings.port = 8081;
@@ -31,7 +32,6 @@ void main()
 
 void myStuff(HTTPServerRequest req, HTTPServerResponse res) // I need this to handle any accessed URLs
 {
-	
 	int error_code;
 	string error_text;
 	if(req.path.length > 10) // prevent lookup for to short URLs

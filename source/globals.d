@@ -6,3 +6,4 @@ shared static this()
 {
 	fLogger = new FileLogger("./logs/Error.log");
 }
+

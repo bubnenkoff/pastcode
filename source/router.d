@@ -22,7 +22,6 @@ class MyRouter : API
        return db.insertCode(data); 
     }
 
-
 }
 
 

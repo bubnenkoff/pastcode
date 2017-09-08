@@ -11,6 +11,12 @@
 -- ---------------------------------------------------------
 
 
+-- CREATE DATABASE "pastecode" -----------------------------
+CREATE DATABASE IF NOT EXISTS `pastecode` CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `pastecode`;
+-- ---------------------------------------------------------
+
+
 -- CREATE TABLE "code" -------------------------------------
 -- CREATE TABLE "code" -----------------------------------------
 CREATE TABLE `code` ( 
@@ -18,15 +24,18 @@ CREATE TABLE `code` (
 	`guid` VarChar( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`languageOne` VarChar( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`codeOne` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`codeTwo` Text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-	`languageTwo` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-	`splitView` TinyInt( 255 ) NULL,
+	`codeTwo` Text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`languageTwo` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`splitView` TinyInt( 255 ) NULL DEFAULT NULL,
+	`paste_date` Timestamp NOT NULL DEFAULT 'current_timestamp()',
+	`userIP` VarChar( 150 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`field` Timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
 	PRIMARY KEY ( `id` ),
 	CONSTRAINT `unique_id` UNIQUE( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 109;
+AUTO_INCREMENT = 131;
 -- -------------------------------------------------------------
 -- ---------------------------------------------------------
 

@@ -1,5 +1,5 @@
 name "pastecode"
-description "simple past code service for pastes.code123.org"
+description "simple past code service for paste.code123.org"
 authors "Dmitry Bubnenkov"
 copyright "Dmitry Bubnenkov"
 license "proprietary"

@@ -4,7 +4,10 @@ import mysql;
 import vibe.d;
 import std.uuid;
 import std.typecons;
+import std.datetime;
 import config;
+import globals;
+
 
 Connection mysqlConnection;
 
@@ -34,20 +37,21 @@ class Database
 	string insertCode(Json data)
 	{
 		string guid = to!string(randomUUID);
+		string currDateTime = Clock.currTime.toISOExtString().replace("T", " ").split(".")[0]; // 2017-09-08 11:43:46
 		
 		try
 		{
 			if(data["splitView"].get!bool) // if splitview is ON. Set splitView to 1
 			{
-				Prepared prepared = prepare(mysqlConnection, `INSERT INTO code (guid, languageOne, codeOne, languageTwo, codeTwo, splitView) VALUES (?,?,?,?,?,?)`);
-				prepared.setArgs(guid, data["languageOne"].get!string, data["codeOne"].get!string, data["languageTwo"].get!string, data["codeTwo"].get!string, 1);
+				Prepared prepared = prepare(mysqlConnection, `INSERT INTO code (guid, languageOne, codeOne, languageTwo, codeTwo, splitView, paste_date) VALUES (?,?,?,?,?,?,?)`);
+				prepared.setArgs(guid, data["languageOne"].get!string, data["codeOne"].get!string, data["languageTwo"].get!string, data["codeTwo"].get!string, 1, currDateTime);
 				prepared.exec();
 	    	}
 
 	    	else // if splitview is OFF. Set splitView to 0
 	    	{
-				Prepared prepared = prepare(mysqlConnection, `INSERT INTO code (guid, languageOne, codeOne, splitView) VALUES (?,?,?,?)`);
-				prepared.setArgs(guid, data["languageOne"].get!string, data["codeOne"].get!string, 0);
+				Prepared prepared = prepare(mysqlConnection, `INSERT INTO code (guid, languageOne, codeOne, splitView, paste_date) VALUES (?,?,?,?,?)`);
+				prepared.setArgs(guid, data["languageOne"].get!string, data["codeOne"].get!string, 0, currDateTime);
 				prepared.exec();
 	    	}
 	    		
@@ -101,7 +105,6 @@ class Database
 
 		//writeln(myAnswer);
 		return myAnswer;
-
 
 	}
 
