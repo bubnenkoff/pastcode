@@ -27,7 +27,7 @@ class MyRouter : API
     string insertCode(Json data, string userIPhandler) // we should return only GUID
     {
        //writeln(userIPhandler);
-       return db.insertCode(data); 
+       return db.insertCode(data, userIPhandler); 
     }
 
 }

@@ -34,7 +34,7 @@ class Database
 	}
 
 
-	string insertCode(Json data)
+	string insertCode(Json data, string userIPhandler)
 	{
 		string guid = to!string(randomUUID);
 		string currDateTime = Clock.currTime.toISOExtString().replace("T", " ").split(".")[0]; // 2017-09-08 11:43:46
