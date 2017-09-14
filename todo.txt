@@ -1,1 +1,0 @@
-to handle IP need implement @before http://vibed.org/api/vibe.web.rest/before

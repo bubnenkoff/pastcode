@@ -6,19 +6,27 @@ import std.stdio;
 //@rootPathFromName
 interface API
 {
-    @path("post")  @method(HTTPMethod.POST)    string insertCode(Json data); 
+    @path("post")  @method(HTTPMethod.POST)    string insertCode(Json data, string userIPhandler);
+}
+
+
+string userIPhandler(HTTPServerRequest req, HTTPServerResponse res)
+{
+    return req.peer;
 }
 
 class MyRouter : API
 {
-     Database db;
-     this(Database db)
-     {
-      this.db = db;
-     }
-   
-    string insertCode(Json data) // we should return only GUID
+    Database db;
+    this(Database db)
     {
+      this.db = db;
+    }
+
+    @before!userIPhandler("userIPhandler")
+    string insertCode(Json data, string userIPhandler) // we should return only GUID
+    {
+       //writeln(userIPhandler);
        return db.insertCode(data); 
     }
 
